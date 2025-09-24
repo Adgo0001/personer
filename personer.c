@@ -21,4 +21,10 @@ void free_person(struct person_t *person) {
     // TODO: Frigør first_name og sæt værdien til NULL
     // TODO: Frigør last_name og sæt værdien til NULL
     // TODO: Frigør selve struct'en og sæt værdien til NULL
+    free(person->first_name);
+    free(person->last_name);
+    person->first_name = NULL;
+    person->last_name = NULL;
+    free(person);
+    person = NULL;
 }

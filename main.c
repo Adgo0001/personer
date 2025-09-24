@@ -1,19 +1,21 @@
 #include <stdio.h>
-#include <stdlib.h>
-
+#include <string.h>
 #include "personer.h"
 
 int main(void) {
-    printf("Hello, World!\n");
-    struct person_t *p = make_person("ada", "something");
+    printf("%s har %d tegn\n", "Simon", strlen("Simon"));
+    printf("En struct person_t er %d bytes\n", sizeof(struct person_t));
 
-    printf("Navn: %s %s \n", p->first_name, p->last_name);
+    struct person_t *simon = make_person("Simon", "Shine");
 
-    free(p->first_name);
-    free(p->last_name);
-    void* person_t;
-    free(person_t);
-    free(p);
+    printf("Navn: %s %s\n", simon->first_name, simon->last_name);
+
+    // Spørgsmål: Kan man bruge sizeof() på arrays?
+    // Svar: Kun hvis de er stak-allokerede, fordi så ved compileren hvor lang den er.
+    char some_name[6] = "Simon";
+    printf("some_name har %d bytes allokeret\n", sizeof(some_name));
+
+    // Dvs. sizeof() virker ikke hvis det fx er en 'char *' (uanset om den er malloc()'et eller ej)
 
     return 0;
 }
